@@ -26,7 +26,11 @@ test('should link to contact information', function(assert){
   })
 });
 
-test('should list available rentals', function(assert){
+test('should list available rentals.', function (assert) {
+  visit('/');
+  andThen(function(){
+    assert.equal(find('.listing').length, 3, 'should list the correct number of model array length');
+  })
 });
 
 test('should filter the list of rentals by city', function(assert){
