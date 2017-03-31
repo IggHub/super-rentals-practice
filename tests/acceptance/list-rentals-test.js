@@ -34,6 +34,13 @@ test('should list available rentals.', function (assert) {
 });
 
 test('should filter the list of rentals by city', function(assert){
+  visit('/');
+  fillIn('.list-filter input', 'Seattle');
+  keyEvent('.list-filter input', 'keyup', 69);
+  andThen(function(){
+    assert.equal(find('.listing').length, 1, 'should list the correct rental based off query');
+    assert.equal(find('.listing .location:contains("Seattle")').length, 1, 'Contains 1 listing with Seattle as location');
+  })
 });
 
 test('should show details for a selected rental', function(assert){
