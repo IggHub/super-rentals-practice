@@ -12,6 +12,10 @@ Router.map(function() {
   this.route('rentals', function() {
     this.route('show', {path: '/:rental_id'});
   });
+  this.route('favorites', {path: '/favs'}, function() {
+    this.route('donut');
+  });
+  this.route('not-found', {path: '/*'});
 });
 
 export default Router;
